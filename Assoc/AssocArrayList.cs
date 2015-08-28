@@ -41,9 +41,9 @@ namespace AdvancedStringHandlingInCSharp.Assoc
             NameComparerFunc = source.NameComparerFunc ?? DefaultCaseInsensitiveCompare;
             foreach (var array in source)
             {
-                var newArray = new AssocArray<T>(array.Name, source.NameComparerFunc);
+                var newArray = new AssocArray<T>(array.Name, this);
                 newArray.AddRange(array
-                    .Select(item => new AssocArrayItem<T>(item.Name, item.Value, item.Tag)));
+                    .Select(item => new AssocArrayItem<T>(item.Name, item.Value, item.Tag, newArray)));
                 Add(newArray);
             }
         }
@@ -67,9 +67,9 @@ namespace AdvancedStringHandlingInCSharp.Assoc
             return toSearch.IndexOf(toFind, StringComparison.OrdinalIgnoreCase) > -1;
         }
 
-        public virtual AssocArray<T> Add(string name, Func<string, string, bool> nameComparerFunc = null)
+        public virtual AssocArray<T> Add(string name)
         {
-            var item = new AssocArray<T>(name, nameComparerFunc);
+            var item = new AssocArray<T>(name, this);
             base.Add(item);
             return item;
         }

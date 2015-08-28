@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Xml.Serialization;
 
@@ -9,21 +8,20 @@ namespace AdvancedStringHandlingInCSharp.Assoc
     [Serializable]
     public class AssocArray<T> : List<AssocArrayItem<T>>
     {
-        [XmlAttribute]
-        public string Name;
-
-        [XmlAttribute]
-        public string SourceArea;
-
         [XmlIgnore]
         public readonly Func<AssocArrayItem<T>, T> OnNullValue;
 
         [XmlIgnore]
         public readonly AssocArrayList<T> Parent;
 
+        [XmlAttribute]
+        public string Name;
+
+        [XmlAttribute]
+        public string SourceArea;
+
         public AssocArray()
         {
-            OnNullValue = AssocArrayList<T>.DefaultCaseInsensitiveCompare;
         }
 
         public AssocArray(string name, AssocArrayList<T> parent)
@@ -32,7 +30,7 @@ namespace AdvancedStringHandlingInCSharp.Assoc
             Parent = parent;
         }
 
-        public AssocArray(string name, Func<AssocArrayItem<T>, T> onNullValue)
+        public AssocArray(string name, AssocArrayList<T> parent, Func<AssocArrayItem<T>, T> onNullValue)
         {
             Name = name;
             OnNullValue = onNullValue;
@@ -42,21 +40,30 @@ namespace AdvancedStringHandlingInCSharp.Assoc
         {
             get
             {
-                var result = this.FirstOrDefault(item => _mNameComparerFunc(item.Name, name));
+                var result = this.FirstOrDefault(item => Parent.NameComparerFunc(item.Name, name));
                 return result ?? Add(name);
             }
         }
 
-        public AssocArrayItem<T> Add(string name, T value = default(T), string tag = "", Func<AssocArrayItem<T>, T> onNullValue = null)
+        public AssocArrayItem<T> Add(string name, T value = default(T), string tag = "")
         {
-            var item = new AssocArrayItem<T>(name, value, tag, onNullValue);
+            var item = new AssocArrayItem<T>(name, value, tag, this);
             base.Add(item);
             return item;
         }
 
         public bool Contains(string name)
         {
-            return this.Any(item => _mNameComparerFunc(item.Name, name));
+            return this.Any(item => Compare(item.Name, name));
+        }
+
+        private bool Compare(string s1, string s2)
+        {
+            if (Parent == null || Parent.NameComparerFunc == null)
+            {
+                return AssocArrayList<T>.DefaultCaseInsensitiveCompare(s1, s2);
+            }
+            return Parent.NameComparerFunc(s1, s2);
         }
     }
 }

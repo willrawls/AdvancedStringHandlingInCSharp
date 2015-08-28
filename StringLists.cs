@@ -6,25 +6,6 @@ namespace AdvancedStringHandlingInCSharp
 {
     public static class StringLists
     {
-        public static List<string> ReconnectAfter(this List<string> target, string reconnectString, string joiner)
-        {
-            if (target == null)
-                return new List<string>();
-            if (target.Count == 0)
-                return target;
-
-            for (var i = 0; i < target.Count - 1; i++)
-            {
-                if (target[i] != reconnectString)
-                    continue;
-                var suffix = target[i + 1];
-                if(suffix.IsNotEmpty())
-                    target[i] += joiner + suffix;
-                target.RemoveAt(i + 1);
-            }
-            return target;
-        }
-
         public static bool AllMustHaveAndArePresent(this IList<string> target, IList<string> mustHaves)
         {
             if (mustHaves.IsEmpty()) return true;
@@ -53,6 +34,25 @@ namespace AdvancedStringHandlingInCSharp
             return mustNotHaves.IsEmpty()
                    || (target.IsEmpty()
                        || target.All(item => !mustNotHaves.Any(item.Contains)));
+        }
+
+        public static List<string> ReconnectAfter(this List<string> target, string reconnectString, string joiner)
+        {
+            if (target == null)
+                return new List<string>();
+            if (target.Count == 0)
+                return target;
+
+            for (var i = 0; i < target.Count - 1; i++)
+            {
+                if (target[i] != reconnectString)
+                    continue;
+                var suffix = target[i + 1];
+                if (suffix.IsNotEmpty())
+                    target[i] += joiner + suffix;
+                target.RemoveAt(i + 1);
+            }
+            return target;
         }
 
         public static string[] SplitAfterNumbers(this IList<string> target, bool autoTrim = true, bool reassembleIfWordFollowedByNumber = true)

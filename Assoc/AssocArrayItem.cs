@@ -9,14 +9,14 @@ namespace AdvancedStringHandlingInCSharp.Assoc
         [XmlAttribute]
         public readonly string Name;
 
+        [XmlIgnore]
+        public readonly AssocArray<T> Parent;
+
         [XmlAttribute]
         public int Index;
 
         [XmlAttribute]
         public string Tag;
-
-        [XmlIgnore]
-        public AssocArray<T> Parent;
 
         // ReSharper disable once StaticMemberInGenericType
         private static int _mNextIndex;
@@ -53,9 +53,9 @@ namespace AdvancedStringHandlingInCSharp.Assoc
         {
             get
             {
-                if (_mValue == null && OnNullValue != null)
+                if (_mValue == null && Parent != null && Parent.OnNullValue != null)
                 {
-                    _mValue = OnNullValue(this);
+                    _mValue = Parent.OnNullValue(this);
                 }
                 return _mValue;
             }
@@ -65,12 +65,6 @@ namespace AdvancedStringHandlingInCSharp.Assoc
         public override string ToString()
         {
             return Name.AsString() + "= " + Value.AsString();
-        }
-
-        public void ValueAndTag(T value, string tag)
-        {
-            Value = value;
-            Tag = tag;
         }
     }
 }

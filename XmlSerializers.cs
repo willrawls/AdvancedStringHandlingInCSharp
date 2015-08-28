@@ -27,6 +27,51 @@ namespace AdvancedStringHandlingInCSharp
         }
 
         /// <summary>
+        /// Don't forget to close the XmlWriter or wrap this line in a using statement
+        /// </summary>
+        /// <param name="output">The stream to wrap</param>
+        /// <returns></returns>
+        public static XmlWriter GetXmlWriter(this Stream output)
+        {
+            var settings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = true,
+                Indent = true
+            };
+            return XmlWriter.Create(output, settings);
+        }
+
+        /// <summary>
+        /// Don't forget to close the XmlWriter or wrap this line in a using statement
+        /// </summary>
+        /// <param name="output">The TextWriter to wrap</param>
+        /// <returns></returns>
+        public static XmlWriter GetXmlWriter(this TextWriter output)
+        {
+            var settings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = true,
+                Indent = true
+            };
+            return XmlWriter.Create(output, settings);
+        }
+
+        /// <summary>
+        /// Don't forget to close the XmlWriter or wrap this line in a using statement
+        /// </summary>
+        /// <param name="output">The StringBuilder to wrap</param>
+        /// <returns></returns>
+        public static XmlWriter GetXmlWriter(this StringBuilder output)
+        {
+            var settings = new XmlWriterSettings
+            {
+                OmitXmlDeclaration = true,
+                Indent = true
+            };
+            return XmlWriter.Create(output, settings);
+        }
+
+        /// <summary>
         /// Turns the xml contents of a file into an object
         /// </summary>
         /// <typeparam name="T">The type to return a XmlSerializer for</typeparam>
@@ -95,55 +140,10 @@ namespace AdvancedStringHandlingInCSharp
             using (var xw = GetXmlWriter(sb))
                 Serializer(typeof(T)).Serialize(xw, toSerialize);
             if (!removeNamespaces) return sb.ToString();
-            
+
             sb.Replace(" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"", string.Empty);
             sb.Replace(" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"", string.Empty);
             return sb.ToString();
-        }
-
-        /// <summary>
-        /// Don't forget to close the XmlWriter or wrap this line in a using statement
-        /// </summary>
-        /// <param name="output">The stream to wrap</param>
-        /// <returns></returns>
-        public static XmlWriter GetXmlWriter(this Stream output)
-        {
-            var settings = new XmlWriterSettings
-            {
-                OmitXmlDeclaration = true,
-                Indent = true
-            };
-            return XmlWriter.Create(output, settings);
-        }
-
-        /// <summary>
-        /// Don't forget to close the XmlWriter or wrap this line in a using statement
-        /// </summary>
-        /// <param name="output">The TextWriter to wrap</param>
-        /// <returns></returns>
-        public static XmlWriter GetXmlWriter(this TextWriter output)
-        {
-            var settings = new XmlWriterSettings
-            {
-                OmitXmlDeclaration = true,
-                Indent = true
-            };
-            return XmlWriter.Create(output, settings);
-        }
-
-        /// <summary>
-        /// Don't forget to close the XmlWriter or wrap this line in a using statement
-        /// </summary>
-        /// <param name="output">The StringBuilder to wrap</param>
-        /// <returns></returns>
-        public static XmlWriter GetXmlWriter(this StringBuilder output)
-        {
-            var settings = new XmlWriterSettings
-            {
-                OmitXmlDeclaration = true,
-                Indent = true
-            };
-            return XmlWriter.Create(output, settings);
         }
     }
 }

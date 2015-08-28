@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 namespace AdvancedStringHandlingInCSharp
 {
@@ -11,12 +10,12 @@ namespace AdvancedStringHandlingInCSharp
             if (target.IsEmpty())
                 return string.Empty;
             var x = target.Select(v => v.AsString());
-            if(suffix.IsNotEmpty())
+            if (suffix.IsNotEmpty())
                 return string.Join(delimiter, x) + suffix;
             return string.Join(delimiter, x);
         }
 
-        public static string ListAsString<T>(this IEnumerable<T> target, string delimiter = "\n") where T: class
+        public static string ListAsString<T>(this IEnumerable<T> target, string delimiter = "\n") where T : class
         {
             if (target == null)
                 return string.Empty;

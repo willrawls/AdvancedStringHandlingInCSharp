@@ -9,9 +9,6 @@ namespace AdvancedStringHandlingInCSharp
 {
     public static class Strings
     {
-        public static readonly Regex WdPartNumbeRegEx = new Regex(@"\d{6}(-(U/00|00/U|00|U))*",
-            RegexOptions.IgnoreCase | RegexOptions.Compiled);
-
         public static int AsInteger(this string target)
         {
             if (target.IsEmpty())
@@ -217,18 +214,6 @@ namespace AdvancedStringHandlingInCSharp
                 return target.Substring(startAt);
             }
             return target.Substring(startAt, endAt - startAt);
-        }
-
-        public static string FirstPartNumber(this string target)
-        {
-            if (string.IsNullOrEmpty(target))
-            {
-                return string.Empty;
-            }
-            var x = WdPartNumbeRegEx.Match(target);
-            return x.Value.IsEmpty()
-                ? string.Empty
-                : x.Value;
         }
 
         public static int FirstSequenceLength(this string target, char delimiter)

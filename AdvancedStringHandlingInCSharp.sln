@@ -1,13 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedStringHandlingInCSharp", "AdvancedStringHandlingInCSharp.csproj", "{82B4F887-4A95-47A8-998B-FEDD4605D701}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExtensions", "..\MyExtensions\MyExtensions.csproj", "{E84222DF-341B-4746-B131-CBC9FD226B5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdvancedStringHandlingInCSharp.Tests", "..\AdvancedStringHandlingInCSharp.Tests\AdvancedStringHandlingInCSharp.Tests.csproj", "{99C729FD-E3B0-4B33-8E8D-8BA7D2D6AF0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyExtensions.Tests", "..\MyExtensions.Test\MyExtensions.Tests.csproj", "{8AD5BB52-0A3F-44A7-A6DA-DE1E4F4DB1CB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarkBook", "..\MarkBook\MarkBook.csproj", "{53EECCA2-E975-43D2-ABDC-5F3279DB4385}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetX", "..\xlg\MetX\MetX\MetX.csproj", "{FF6EC6B3-5AA7-4CD6-B7C1-B4C2BCBE7051}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Book", "Book", "{5F3C9BEE-5699-48AE-9EFC-5CFBFE6A6ED3}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Documents\AdvancedStrings\1_meta_data.mmd = ..\..\..\Documents\AdvancedStrings\1_meta_data.mmd
+		..\..\..\Documents\AdvancedStrings\2_front_matter.mmd = ..\..\..\Documents\AdvancedStrings\2_front_matter.mmd
+		..\..\..\Documents\AdvancedStrings\3_table_of_contents.mmd = ..\..\..\Documents\AdvancedStrings\3_table_of_contents.mmd
+		..\..\..\Documents\AdvancedStrings\4_advanced_strings_in_csharp.mmd = ..\..\..\Documents\AdvancedStrings\4_advanced_strings_in_csharp.mmd
+		..\..\..\Documents\AdvancedStrings\5_afterward.mmd = ..\..\..\Documents\AdvancedStrings\5_afterward.mmd
+		..\..\..\Documents\AdvancedStrings\7_images.mmd = ..\..\..\Documents\AdvancedStrings\7_images.mmd
+		..\..\..\Documents\AdvancedStrings\ASHICS.html = ..\..\..\Documents\AdvancedStrings\ASHICS.html
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{152136CA-4794-4D09-B9F9-58CBBA3D6491}"
+	ProjectSection(SolutionItems) = preProject
+		WE-Markdown.css = WE-Markdown.css
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +37,18 @@ Global
 		{82B4F887-4A95-47A8-998B-FEDD4605D701}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82B4F887-4A95-47A8-998B-FEDD4605D701}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82B4F887-4A95-47A8-998B-FEDD4605D701}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E84222DF-341B-4746-B131-CBC9FD226B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E84222DF-341B-4746-B131-CBC9FD226B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E84222DF-341B-4746-B131-CBC9FD226B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E84222DF-341B-4746-B131-CBC9FD226B5D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8AD5BB52-0A3F-44A7-A6DA-DE1E4F4DB1CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8AD5BB52-0A3F-44A7-A6DA-DE1E4F4DB1CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8AD5BB52-0A3F-44A7-A6DA-DE1E4F4DB1CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8AD5BB52-0A3F-44A7-A6DA-DE1E4F4DB1CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99C729FD-E3B0-4B33-8E8D-8BA7D2D6AF0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99C729FD-E3B0-4B33-8E8D-8BA7D2D6AF0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99C729FD-E3B0-4B33-8E8D-8BA7D2D6AF0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99C729FD-E3B0-4B33-8E8D-8BA7D2D6AF0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53EECCA2-E975-43D2-ABDC-5F3279DB4385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53EECCA2-E975-43D2-ABDC-5F3279DB4385}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53EECCA2-E975-43D2-ABDC-5F3279DB4385}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53EECCA2-E975-43D2-ABDC-5F3279DB4385}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF6EC6B3-5AA7-4CD6-B7C1-B4C2BCBE7051}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF6EC6B3-5AA7-4CD6-B7C1-B4C2BCBE7051}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF6EC6B3-5AA7-4CD6-B7C1-B4C2BCBE7051}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF6EC6B3-5AA7-4CD6-B7C1-B4C2BCBE7051}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
