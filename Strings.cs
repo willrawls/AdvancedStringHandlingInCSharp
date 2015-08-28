@@ -31,14 +31,8 @@ namespace AdvancedStringHandlingInCSharp
             if (!(target is string))
             {
                 return target.ToString();
-                //                return trimmed
-                //                    ? target.ToString().Trim()
-                //                    : target.ToString();
             }
             return (string)target;
-            //            return trimmed
-            //                ? ((string)target).Trim()
-            //                : (string)target;
         }
 
         public static string AsString(this string[] target, string separator)
